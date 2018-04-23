@@ -8,7 +8,11 @@
         <th>Email Name</th>
       </thead>
       <tbody>
-        <tr v-for="(contact, key) in contacts" :key="key">
+        <tr
+          v-for="(contact, key) in contacts"
+          :key="key"
+          v-if="contact.first_name === 'John'"
+        >
           <td>{{ contact.first_name }}</td>
           <td>{{ contact.last_name}}</td>
           <td>{{ contact.email }}</td>
