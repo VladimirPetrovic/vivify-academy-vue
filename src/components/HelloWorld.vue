@@ -20,12 +20,13 @@
     </ul>
     <h3>Ecosystem</h3>
     <ul>
-      <li><a href="https://router.vuejs.org/en/essentials/getting-started.html" target="_blank">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org/en/intro.html" target="_blank">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org/en" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+      <li v-for="(user, key) in users" :key="key">
+        {{ user.name }} {{ key }}
+      </li>
     </ul>
+    <input v-model="message" />
+    {{ message }}
+    <button @click="handleClick(msg)">Click Me</button>
   </div>
 </template>
 
@@ -34,6 +35,21 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      message: '',
+      users: [
+        { name: "Jonh" },
+        { name: "Patrick" },
+        { name: "Jack" }
+      ]
+    }
+  },
+  methods: {
+    handleClick(message) {
+      alert(message);
+    }
   }
 }
 </script>
