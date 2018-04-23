@@ -6,12 +6,16 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email Name</th>
+        <th>&nbsp;</th>
       </thead>
       <tbody>
         <tr v-for="(contact, key) in contacts" :key="key">
           <td>{{ contact.first_name }}</td>
           <td>{{ contact.last_name}}</td>
           <td>{{ contact.email }}</td>
+          <td>
+            <button @click="deleteContact(key)">Remove</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -49,6 +53,9 @@ export default {
     addContact() {
       this.contacts.push(this.newContact);
       this.newContact = {};
+    },
+    deleteContact(key) {
+      this.contacts.splice(key, 1);
     }
   }
 }
